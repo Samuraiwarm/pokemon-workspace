@@ -1,0 +1,41 @@
+type Query {
+	getPokemon(where: PokemonWhereUniqueInput!): Pokemon
+	getAllPokemons: [Pokemon]!
+}
+
+type Mutation {
+	createPokemon(data: PokemonInput!): Pokemon!
+	editPokemon(data: PokemonInput!, where: PokemonWhereUniqueInput!): Pokemon!
+	deletePokemon(where: PokemonWhereUniqueInput!): Pokemon!
+	attackPokemon(data: PokemonAttackInput!, where: PokemonWhereUniqueInput!): AttackMessage!
+	hospitalizePokemon(where: PokemonWhereUniqueInput!): HospitalizeMessage!
+}
+
+input PokemonInput {
+	name: String!
+	type: ElementalTypeEnum!
+	attacks: [AttackInput]!
+	maxHP: Int!
+	maxMP: Int!
+}
+
+input AttackInput {
+	name: String!
+	type: ElementalTypeEnum!
+	damage: Int!
+	MP: Int!
+}
+
+input PokemonAttackInput {
+	attack: ID!
+}
+
+type AttackMessage {
+	payload: String
+	error: String
+}
+
+type HospitalizeMessage {
+	payload: String
+	error: String
+}
