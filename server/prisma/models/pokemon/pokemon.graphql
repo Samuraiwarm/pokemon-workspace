@@ -1,0 +1,55 @@
+type Pokemon {
+	id: ID! @id @unique
+	user: User! @relation(name: "PokemonsOfUser")
+	name: String!
+	type: ElementalType! @relation(name: "ElementalTypeOfPokemon", link: TABLE, onDelete: CASCADE)
+	attacks: [Attack]! @relation(name: "AttacksOfPokemon", onDelete: CASCADE)
+	currentHP: Int
+	maxHP: Int!
+	currentMP: Int
+	maxMP: Int!
+}
+
+type Attack {
+	id: ID! @id @unique
+	#FK
+	pokemon: Pokemon! @relation(name: "AttacksOfPokemon")
+
+	name: String!
+	type: ElementalType! @relation(name: "ElementalTypeOfAttack", link: TABLE, onDelete: CASCADE)
+	damage: Int!
+	MP: Int!
+}
+
+type ElementalType {
+	id: ID! @id @unique
+	#FK
+	pokemon: Pokemon @relation(name: "ElementalTypeOfPokemon")
+	attack: Attack @relation(name: "ElementalTypeOfAttack")
+
+	type: ElementalTypeEnum!
+	strong: [ElementalTypeEnum]! @scalarList(strategy: RELATION)
+	weak: [ElementalTypeEnum]! @scalarList(strategy: RELATION)
+	resist: [ElementalTypeEnum]! @scalarList(strategy: RELATION)
+}
+
+enum ElementalTypeEnum {
+	NORMAL
+	FIRE
+	WATER
+	ELECTRIC
+	GRASS
+	ICE
+	FIGHTING
+	POISON
+	GROUND
+	FLYING
+	PSYCHIC
+	BUG
+	ROCK
+	GHOST
+	DRAGON
+	DARK
+	STEEL
+	FAIRY
+}
