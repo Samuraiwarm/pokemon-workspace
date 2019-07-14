@@ -4,6 +4,7 @@ type User {
   password: String!
   role: UserRole!
   profileImage: String
+  pokemons: [Pokemon]!
 }
 
 enum UserRole {
