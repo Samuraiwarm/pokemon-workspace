@@ -1,8 +1,7 @@
 import { Resolvers } from "../resolver.types";
 import { forwardTo } from "prisma-binding";
-import { Resolver } from "dns";
 
-export const pokemon: Resolvers = {
+const pokemon: Resolvers = {
 	Query: {
 		getPokemon: forwardTo('db'),
 		getAllPokemons: forwardTo('db')
@@ -26,8 +25,10 @@ export const pokemon: Resolvers = {
 						maxMP: args.data.maxMP,
 						currentMP: args.data.maxMP,
 					}
-				}
+				}, info
 			)
 		}
 	}
 }
+
+export default pokemon;

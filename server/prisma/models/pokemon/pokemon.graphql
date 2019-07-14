@@ -2,7 +2,7 @@ type Pokemon {
 	id: ID! @id @unique
 	user: User! @relation(name: "PokemonsOfUser")
 	name: String!
-	type: ElementalType! @relation(name: "ElementalTypeOfPokemon", link: TABLE, onDelete: CASCADE)
+	type: ElementalType! @relation(name: "ElementalTypeOfPokemon", link: TABLE, onDelete: SET_NULL)
 	attacks: [Attack]! @relation(name: "AttacksOfPokemon", onDelete: CASCADE)
 	currentHP: Int
 	maxHP: Int!
@@ -24,8 +24,8 @@ type Attack {
 type ElementalType {
 	id: ID! @id @unique
 	#FK
-	pokemon: Pokemon @relation(name: "ElementalTypeOfPokemon")
-	attack: Attack @relation(name: "ElementalTypeOfAttack")
+	pokemons: [Pokemon!] @relation(name: "ElementalTypeOfPokemon")
+	attacks: [Attack!] @relation(name: "ElementalTypeOfAttack")
 
 	type: ElementalTypeEnum! @unique
 	strong: [ElementalTypeEnum]! @scalarList(strategy: RELATION)
