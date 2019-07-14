@@ -27,7 +27,7 @@ type ElementalType {
 	pokemon: Pokemon @relation(name: "ElementalTypeOfPokemon")
 	attack: Attack @relation(name: "ElementalTypeOfAttack")
 
-	type: ElementalTypeEnum!
+	type: ElementalTypeEnum! @unique
 	strong: [ElementalTypeEnum]! @scalarList(strategy: RELATION)
 	weak: [ElementalTypeEnum]! @scalarList(strategy: RELATION)
 	resist: [ElementalTypeEnum]! @scalarList(strategy: RELATION)

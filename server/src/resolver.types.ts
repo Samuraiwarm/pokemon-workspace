@@ -530,7 +530,7 @@ export type PokemonAttackInput = {
 export type PokemonInput = {
   name: Scalars["String"];
   type: ElementalTypeEnum;
-  attacks: Array<Maybe<AttackInput>>;
+  attacks?: Maybe<Array<AttackInput>>;
   maxHP: Scalars["Int"];
   maxMP: Scalars["Int"];
 };

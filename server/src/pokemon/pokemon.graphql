@@ -14,7 +14,7 @@ type Mutation {
 input PokemonInput {
 	name: String!
 	type: ElementalTypeEnum!
-	attacks: [AttackInput]!
+	attacks: [AttackInput!]
 	maxHP: Int!
 	maxMP: Int!
 }
