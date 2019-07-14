@@ -104,6 +104,11 @@ export type AttackWhereInput = {
   NOT?: Maybe<Array<AttackWhereInput>>;
 };
 
+export type AttackWhereUniqueInput = {
+  id?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
 export type AuthPayload = {
   __typename?: "AuthPayload";
   token: Scalars["String"];
@@ -547,7 +552,8 @@ export type PokemonAttacksArgs = {
 };
 
 export type PokemonAttackInput = {
-  attack: Scalars["ID"];
+  pokemon: PokemonWhereUniqueInput;
+  attack: AttackWhereUniqueInput;
 };
 
 export type PokemonInput = {
@@ -880,6 +886,7 @@ export type ResolversTypes = {
   UserWhereUniqueInput: UserWhereUniqueInput;
   AttackInput: AttackInput;
   PokemonAttackInput: PokemonAttackInput;
+  AttackWhereUniqueInput: AttackWhereUniqueInput;
   AttackMessage: ResolverTypeWrapper<AttackMessage>;
   HospitalizeMessage: ResolverTypeWrapper<HospitalizeMessage>;
   AuthPayload: ResolverTypeWrapper<
@@ -931,6 +938,7 @@ export type ResolversParentTypes = {
   UserWhereUniqueInput: UserWhereUniqueInput;
   AttackInput: AttackInput;
   PokemonAttackInput: PokemonAttackInput;
+  AttackWhereUniqueInput: AttackWhereUniqueInput;
   AttackMessage: AttackMessage;
   HospitalizeMessage: HospitalizeMessage;
   AuthPayload: Omit<AuthPayload, "user"> & { user: ResolversTypes["User"] };

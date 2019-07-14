@@ -99,6 +99,11 @@ export type AttackWhereInput = {
   NOT?: Maybe<Array<AttackWhereInput>>;
 };
 
+export type AttackWhereUniqueInput = {
+  id?: Maybe<Scalars["ID"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
 export type AuthPayload = {
   __typename?: "AuthPayload";
   token: Scalars["String"];
@@ -542,7 +547,8 @@ export type PokemonAttacksArgs = {
 };
 
 export type PokemonAttackInput = {
-  attack: Scalars["ID"];
+  pokemon: PokemonWhereUniqueInput;
+  attack: AttackWhereUniqueInput;
 };
 
 export type PokemonInput = {

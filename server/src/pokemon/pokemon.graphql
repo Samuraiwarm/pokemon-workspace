@@ -28,7 +28,8 @@ input AttackInput {
 }
 
 input PokemonAttackInput {
-	attack: ID!
+	pokemon: PokemonWhereUniqueInput!
+	attack: AttackWhereUniqueInput!
 }
 
 type AttackMessage {
