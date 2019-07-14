@@ -773,6 +773,7 @@ export type PokemonAttackInput = {
 };
 
 export type PokemonInput = {
+  user: UserWhereUniqueInput;
   name: Scalars["String"];
   type: ElementalTypeEnum;
   attacks?: Maybe<Array<AttackInput>>;
@@ -1097,6 +1098,11 @@ export type UserWhereInput = {
   pokemons_none?: Maybe<PokemonWhereInput>;
 };
 
+export type UserWhereUniqueInput = {
+  id?: Maybe<Scalars["ID"]>;
+  email?: Maybe<Scalars["String"]>;
+};
+
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
@@ -1209,6 +1215,7 @@ export type ResolversTypes = {
   CardInput: CardInput;
   Upload: ResolverTypeWrapper<Scalars["Upload"]>;
   PokemonInput: PokemonInput;
+  UserWhereUniqueInput: UserWhereUniqueInput;
   AttackInput: AttackInput;
   PokemonAttackInput: PokemonAttackInput;
   AttackMessage: ResolverTypeWrapper<AttackMessage>;
@@ -1263,6 +1270,7 @@ export type ResolversParentTypes = {
   CardInput: CardInput;
   Upload: Scalars["Upload"];
   PokemonInput: PokemonInput;
+  UserWhereUniqueInput: UserWhereUniqueInput;
   AttackInput: AttackInput;
   PokemonAttackInput: PokemonAttackInput;
   AttackMessage: AttackMessage;

@@ -768,6 +768,7 @@ export type PokemonAttackInput = {
 };
 
 export type PokemonInput = {
+  user: UserWhereUniqueInput;
   name: Scalars["String"];
   type: ElementalTypeEnum;
   attacks?: Maybe<Array<AttackInput>>;
@@ -1090,6 +1091,11 @@ export type UserWhereInput = {
   pokemons_every?: Maybe<PokemonWhereInput>;
   pokemons_some?: Maybe<PokemonWhereInput>;
   pokemons_none?: Maybe<PokemonWhereInput>;
+};
+
+export type UserWhereUniqueInput = {
+  id?: Maybe<Scalars["ID"]>;
+  email?: Maybe<Scalars["String"]>;
 };
 export type CardContentFragment = { __typename?: "Card" } & Pick<
   Card,

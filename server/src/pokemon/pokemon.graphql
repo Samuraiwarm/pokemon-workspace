@@ -12,6 +12,7 @@ type Mutation {
 }
 
 input PokemonInput {
+	user: UserWhereUniqueInput!
 	name: String!
 	type: ElementalTypeEnum!
 	attacks: [AttackInput!]
