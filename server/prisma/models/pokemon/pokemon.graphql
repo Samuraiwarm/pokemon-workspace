@@ -1,5 +1,6 @@
 type Pokemon {
 	id: ID! @id @unique
+	user: User! @relation(name: "PokemonsOfUser")
 	name: String!
 	type: ElementalType! @relation(name: "ElementalTypeOfPokemon", link: TABLE, onDelete: CASCADE)
 	attacks: [Attack]! @relation(name: "AttacksOfPokemon", onDelete: CASCADE)
